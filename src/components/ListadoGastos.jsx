@@ -1,5 +1,5 @@
 import React from 'react'
-import Gasto from './gasto'
+import Gasto from './Gasto'
 
 const ListadoGastos = ({gastos,setGastosEditar}) => {
   return (
