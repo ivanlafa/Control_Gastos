@@ -6,13 +6,15 @@ import { generarId } from "./helpers";
 import IconoNuevoGasto from "./img/nuevo-gasto.svg";
 
 function App() {
-  const [presupuesto, setPresupuesto] = useState(0);
+  const [gastos, setGastos] = useState([]);
+
+  const [presupuesto, setPresupuesto] = useState("");
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
 
   const [modal, setModal] = useState(false);
   const [animarModal, setAnimarModal] = useState(false);
+  const [gastoEditar,setGastoEditar] = useState({});
 
-  const [gastos, setGastos] = useState([]);
 
   const handleNuevoGasto = () => {
     //console.log('Diste click para añadir un nuevo gasto')
@@ -27,6 +29,7 @@ function App() {
 
   const guardarGasto = (gasto) => {
     gasto.id = generarId();
+    gasto.fecha = Date.now();
     setGastos([...gastos, gasto]);
 
     setAnimarModal(false);
@@ -36,8 +39,9 @@ function App() {
   };
 
   return (
-    <div>
+    <div className={modal ? 'fijar' : ''}>
       <Header
+       gastos={gastos}
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
         isValidPresupuesto={isValidPresupuesto}
@@ -49,6 +53,7 @@ function App() {
           <main>
             <ListadoGastos
             gastos={gastos}
+            setGastoEditar={setGastoEditar}
             />
 
           </main>

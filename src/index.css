@@ -6,6 +6,7 @@
     --gris-oscuro: #64748b;
     --negro: #000;
     --rojo: rgba(199, 21, 21, 0.89);
+    --amarillo : rgb(226, 226, 10);
 }
 
 body {
@@ -387,13 +388,13 @@ body .modal {
 
 /*** SWIPE LIST OVERRIDES **/
 .swipe-action__leading {
-    background-color: var(--azul);
+    background-color: var(--amarillo);
     color: var(--blanco);
     margin-bottom: 2rem;
 }
 
 .swipe-action__trailing {
-    background-color: #db2777;
+    background-color: #db2727;
     margin-bottom: 2rem;
     color: var(--blanco);
 }
