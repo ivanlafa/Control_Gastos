@@ -4,7 +4,6 @@ import Mensaje from "./Mensaje";
 const NuevoProsupuesto = ({
   presupuesto,
   setPresupuesto,
-  isValidPresupuesto,
   setIsValidPresupuesto,
 }) => {
   const [mensaje, setMensaje] = useState("");

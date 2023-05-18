@@ -29,15 +29,17 @@ salud: IconoSalud,
 suscripciones:IconoSucripciones
 }
 
-const Gasto = ({gasto,setGastosEditar}) => {
+const Gasto = ({gasto,setGastoEditar}) => {
   const {categoria,nombre,cantidad,id,fecha} = gasto;
+
   const leadingActions = ()=>(
     <LeadingActions>
-      <SwipeAction onClick={()=> setGastosEditar(gasto)}>
+      <SwipeAction onClick={()=> setGastoEditar(gasto)}>
           Editar
-      </SwipeAction>
+      </SwipeAction> 
     </LeadingActions>
-  )
+   )
+
   const trailingActions = ()=>(
     //console.log('eliminando..')
    <TrailingActions>
@@ -59,7 +61,6 @@ const Gasto = ({gasto,setGastosEditar}) => {
         <img 
         src={dicciocionarioIconos[categoria]} 
         alt="Icono Gasto" 
-        
         />
         <div className='descripcion-gasto'>
             <p className='categoria'>{categoria}</p>
