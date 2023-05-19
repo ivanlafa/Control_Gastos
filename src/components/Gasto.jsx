@@ -8,8 +8,6 @@ import {
 }from 'react-swipeable-list';
 
 import "react-swipeable-list/dist/styles.css";
-
-
 import { formatearFecha } from '../helpers';
 import IconoAhorro from '../img/icono_ahorro.svg';
 import IconoCasa from '../img/icono_casa.svg';
@@ -29,7 +27,7 @@ salud: IconoSalud,
 suscripciones:IconoSucripciones
 }
 
-const Gasto = ({gasto,setGastoEditar}) => {
+const Gasto = ({gasto,setGastoEditar,eliminarGasto}) => {
   const {categoria,nombre,cantidad,id,fecha} = gasto;
 
   const leadingActions = ()=>(
@@ -43,7 +41,9 @@ const Gasto = ({gasto,setGastoEditar}) => {
   const trailingActions = ()=>(
     //console.log('eliminando..')
    <TrailingActions>
-    <SwipeAction onClick={()=>console.log('Eliminar...')}>
+    <SwipeAction onClick={()=>eliminarGasto(id)}
+    destructive={true}
+    >
     Eliminar
     </SwipeAction>
    </TrailingActions>

@@ -17,16 +17,16 @@ function App() {
 
     useEffect(() => {
     //console.log('componente listo')
-     if(Object.keys(gastoEditar).length > 0){
-     //console.log('Gasto editar Tiene algo')
-     setModal(true);
-
+    if(Object.keys(gastoEditar).length > 0 ){
+      //console.log('gasto editar tiene algo')
+      setModal(true);
     setTimeout(() => {
       //console.log('animando modal')
 
       setAnimarModal(true);
     }, 500);
-     }
+    }
+
     }, [gastoEditar])
 
 
@@ -42,29 +42,33 @@ function App() {
     }, 500);
   };
 
-  const guardarGasto = (gasto) => {
-    gasto.fecha = Date.now();
-  
-    if (gastoEditar.id) {
-      // Si el gasto a editar tiene un ID, actualiza el gasto existente
-      const gastosActualizados = gastos.map((g) => {
-        if (g.id === gastoEditar.id) {
-          return gasto;
-        }
-        return g;
-      });
-      setGastos(gastosActualizados);
-    } else {
-      // Si el gasto a editar no tiene un ID, agrega un nuevo gasto
+  const guardarGasto = gasto => {
+    // console.log(gasto)
+    // return ;
+
+    if (gasto.id) {
+      //actualizar
+      const gastosActualizados = gastos.map(gastoState => gastoState.id ===
+        gasto.id ? gasto : gastoState)
+        setGastos(gastosActualizados);
+    }else{
+      //nuevo gasto
       gasto.id = generarId();
-      setGastos([...gastos, gasto]);
+      gasto.fecha = Date.now();
+      setGastos([...gastos,gasto])
     }
-  
-    setAnimarModal(false);
-    setTimeout(() => {
-      setModal(false);
-    }, 500);
+   setAnimarModal(false)
+   setTimeout(() => {
+    setModal(false)
+   }, 500);
   };
+
+  const eliminarGasto = id => {
+//console.log('eliminando', id)
+const gastosActualizados = gastos.filter(gasto => gasto.id !== id);
+setGastos(gastosActualizados);
+//console.log(gastosActualizados)
+  }
 
   return (
     <div className={modal ? 'fijar' : ''}>
@@ -82,6 +86,7 @@ function App() {
             <ListadoGastos
             gastos={gastos}
             setGastoEditar={setGastoEditar}
+            eliminarGasto={eliminarGasto}
             />
 
           </main>
