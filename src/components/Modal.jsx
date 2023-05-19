@@ -28,7 +28,7 @@ const Modal = ({
 
   const ocultarModal = () => {
     //console.log('cerrando modal')
-    setModal(false);
+    //setModal(false);
     setAnimarModal(false);
     setTimeout(()=>{
         setModal(false)

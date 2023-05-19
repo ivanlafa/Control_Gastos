@@ -43,10 +43,23 @@ function App() {
   };
 
   const guardarGasto = (gasto) => {
-    gasto.id = generarId();
     gasto.fecha = Date.now();
-    setGastos([...gastos, gasto]);
-
+  
+    if (gastoEditar.id) {
+      // Si el gasto a editar tiene un ID, actualiza el gasto existente
+      const gastosActualizados = gastos.map((g) => {
+        if (g.id === gastoEditar.id) {
+          return gasto;
+        }
+        return g;
+      });
+      setGastos(gastosActualizados);
+    } else {
+      // Si el gasto a editar no tiene un ID, agrega un nuevo gasto
+      gasto.id = generarId();
+      setGastos([...gastos, gasto]);
+    }
+  
     setAnimarModal(false);
     setTimeout(() => {
       setModal(false);
