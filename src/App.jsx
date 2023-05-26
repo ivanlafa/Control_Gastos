@@ -5,10 +5,16 @@ import Modal from "./components/Modal";
 import { generarId } from "./helpers";
 import IconoNuevoGasto from "./img/nuevo-gasto.svg";
 
-function App() {
-  const [gastos, setGastos] = useState([])
 
-  const [presupuesto, setPresupuesto] = useState(0)
+function App() {
+  
+  const [gastos, setGastos] = useState( 
+    localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')) : []
+   );
+
+  const [presupuesto, setPresupuesto] = useState(
+    Number(localStorage.getItem('presupuesto')) ?? 0
+  )
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false)
 
   const [modal, setModal] = useState(false)
@@ -29,6 +35,24 @@ function App() {
 
     }, [gastoEditar])
 
+    useEffect(() => {
+    //console.log(presupuesto)
+    localStorage.setItem('presupuesto', presupuesto ?? 0)
+    }, [presupuesto])
+
+     useEffect(() => {
+       localStorage.setItem('gastos', JSON.stringify(gastos) ?? [] );
+      }, [gastos])
+   
+    useEffect(() => {
+    const presupuestoLs = Number(localStorage.getItem('presupuesto')) ?? 0;
+    //console.log(presupuestoLs)
+    if (presupuestoLs > 0) {
+      setIsValidPresupuesto(true)
+    }
+    }, [])
+
+ 
 
   const handleNuevoGasto = () => {
     //console.log('Diste click para añadir un nuevo gasto')
@@ -107,7 +131,7 @@ setGastos(gastosActualizados);
           setAnimarModal={setAnimarModal}
           guardarGasto={guardarGasto}
           gastoEditar={gastoEditar}
-          set
+          setGastoEditar={setGastoEditar}
         />
       )}
     </div>
