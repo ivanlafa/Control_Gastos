@@ -32,10 +32,10 @@ import Gasto from './Gasto'
                   setGastoEditar={setGastoEditar}
                   eliminarGasto={eliminarGasto}
                   />
-              ))
-              )
+       
+               ))}
               </>
-            }
+  
     </div>
   )
 }
