@@ -13,7 +13,7 @@ const Filtro = ({filtro,setFiltro}) => {
               value={filtro}
               onChange={e => setFiltro(e.target.value)}
               >
-           <option value="">-- Seleccione --</option>
+           <option value="">-- Todos los gastos --</option>
                 <option value="ahorro">Ahorro</option>
                 <option value="comida">Comida</option>
                 <option value="casa">Casa</option>
