@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <g fill="none" stroke="black" stroke-width="2">
+    <!-- Cuerpo del autobús -->
+    <rect x="8" y="20" width="48" height="24" fill="#f0f0f0" stroke="#000"/>
+    <!-- Ventanas -->
+    <rect x="12" y="24" width="10" height="10" fill="#d0d0d0" stroke="#000"/>
+    <rect x="26" y="24" width="10" height="10" fill="#d0d0d0" stroke="#000"/>
+    <rect x="40" y="24" width="10" height="10" fill="#d0d0d0" stroke="#000"/>
+    <!-- Ruedas -->
+    <circle cx="16" cy="48" r="6" fill="#333" stroke="#000"/>
+    <circle cx="48" cy="48" r="6" fill="#333" stroke="#000"/>
+  </g>
+</svg>
